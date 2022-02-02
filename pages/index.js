@@ -2,25 +2,7 @@ import appConfig from "../config.json";
 import { Box, Button, Text, TextField, Image } from "@skynexui/components";
 import { useState } from "react";
 import { useRouter } from "next/router";
-
-function Title(props) {
-  const Tag = props.tag || "h1";
-
-  return (
-    <>
-      <Tag>{props.children}</Tag>
-      <style jsx>
-        {`
-          ${Tag} {
-            color: ${appConfig.theme.colors.neutrals["000"]};
-            font-size: 50px;
-            font-weight: bold;
-          }
-        `}
-      </style>
-    </>
-  );
-}
+import { createClient } from "@supabase/supabase-js";
 
 export default function PaginaInicial() {
   const [username, setUsername] = useState("");
@@ -155,6 +137,25 @@ export default function PaginaInicial() {
           {/* Photo Area */}
         </Box>
       </Box>
+    </>
+  );
+}
+
+function Title(props) {
+  const Tag = props.tag || "h1";
+
+  return (
+    <>
+      <Tag>{props.children}</Tag>
+      <style jsx>
+        {`
+          ${Tag} {
+            color: ${appConfig.theme.colors.neutrals["000"]};
+            font-size: 50px;
+            font-weight: bold;
+          }
+        `}
+      </style>
     </>
   );
 }
